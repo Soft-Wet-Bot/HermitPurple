@@ -1,16 +1,25 @@
 {
-  "name": "@yimura/scraper",
+  "name": "hermitpurple",
   "version": "0.1.0",
-  "description": "A YouTube scraper that uses minimal dependencies",
+  "description": "A Wikia/Fandom scrapper that uses minimal dependencies",
   "main": "index.js",
   "scripts": {
     "test": "node test/search.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Soft-Wet-Bot/HermitPurple.git"
+  },
   "keywords": [
-    "youtubesearch",
-    "scrape"
+    "wikia",
+    "fandom",
+    "scrapper",
+    "scrap"
   ],
-  "author": "yimura",
+  "author": "GeopJr",
   "license": "MIT",
-  "dependencies": {}
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "node-fetch": "^2.6.1"
+  }
 }

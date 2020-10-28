@@ -1,11 +1,11 @@
 "use strict"
-const Scraper = require('../index.js').default;
+const HermitPurple = require('../index.js').default;
 
-const youtube = new Scraper();
+const wikia = new HermitPurple("jojo", 1);
 const startTime = Date.now();
 
-youtube.search('Never gonna give you up').then(results => {
-    console.log(results[0]);
+wikia.search('Josuke Higashikata').then(results => {
+    console.log(results["title"]);
 
     console.log(`Fetched ${results.length} tracks in ${Date.now() - startTime}ms.`);
 });

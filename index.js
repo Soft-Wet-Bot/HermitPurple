@@ -1,7 +1,7 @@
 "use strict"
-const Scraper = require('./src/Scraper.js');
+const HermitPurple = require('./src/HermitPurple.js');
 
 module.exports = {
-    default: Scraper,
-    Scraper
+    default: HermitPurple,
+    HermitPurple
 };
