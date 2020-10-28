@@ -96,4 +96,4 @@ class HermitPurple {
     return article;
   }
 }
-module.exports = Scraper;
+module.exports = HermitPurple;
