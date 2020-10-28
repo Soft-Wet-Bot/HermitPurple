@@ -52,7 +52,7 @@ class HermitPurple {
     }
     const $ = cheerio.load(webPage);
 
-    reply["img"] = $('.pi-image-thumbnail').prop("src")
+    reply["img"] = $('.pi-image-thumbnail').prop("src") || $('.image').prop("href")
 
     // remove useless parts
     $("aside").remove();
