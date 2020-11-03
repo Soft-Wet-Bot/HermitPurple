@@ -17,12 +17,16 @@ class HermitPurple {
    */
   _getSearchData(webPage) {
     const $ = cheerio.load(webPage);
-    const articles = []; // [url, id]
+    const articles = [];
     $('.unified-search__result__title').each((x, y) => {
-      if (y > this.limit) return false; //break. y starts at 0.
-      const arr = [$(y).prop('href'), $(y).prop('data-page-id')]
-      if (arr[1]) {
-        articles.push(arr);
+      if (x >= this.limit) return false; //break. y starts at 0.
+      const obj = {
+        url: $(y).prop('href'),
+        id: $(y).prop('data-page-id'),
+        title: $(y).prop('data-title')
+      }
+      if (obj.id) {
+        articles.push(obj);
       }
     });
 
@@ -39,16 +43,13 @@ class HermitPurple {
   }
 
   /**
-   * @private
-   * @param {array} article An article from _getSearchData
+   * @param {object} article An article from _getSearchData
    * @returns {object} Results
    */
-  async _getArticle(article) {
-    const webPage = await this._downloadPage(article[0])
-    const reply = {
-      id: article[1],
-      url: article[0]
-    }
+  async getArticle(article) {
+    if (!article.hasOwnProperty("url")) throw new Error('Partial article passed into getArticle()')
+    const webPage = await this._downloadPage(article.url)
+    const reply = article
     const $ = cheerio.load(webPage);
 
     reply["img"] = $('.pi-image-thumbnail').prop("src") || $('.image').prop("href")
