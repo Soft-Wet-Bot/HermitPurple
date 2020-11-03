@@ -66,8 +66,7 @@ class HermitPurple {
       if ($(y).text().replace(/\s/g, "") !== "") text.push($(y).text())
     });
 
-    reply["article"] = text.join(" ").replace(/(\r\n|\n|\r)/gm, ""); //remove newlines
-    reply["title"] = $("#firstHeading").text();
+    reply["article"] = text.join(" ").replace(/(\r\n|\n|\r)|(\[\d+\])/gm, ""); //remove newlines and all num anchors ([0-9])
 
     return reply
   }
