@@ -1,6 +1,6 @@
 {
   "name": "hermitpurple",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "A Wikia/Fandom scrapper that uses minimal dependencies",
   "main": "index.js",
   "scripts": {
