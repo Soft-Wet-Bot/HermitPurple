@@ -83,16 +83,29 @@ class HermitPurple {
   }
 
   /**
-   * @param {string} query The string to search for on youtube
+   * @param {string} query The string to search for on wikia
+   * @returns {array} Array of basic info of the articles found
    */
-  async search(query) {
+  async searchResults(query) {
     const webPage = await this._fetch(query);
     const articles = this._getSearchData(webPage);
     if (articles.length === 0) throw new Error('No articles found')
 
-    const article = await this._getArticle(articles[0]);
+    return articles;
+  }
 
-    return article;
+  /**
+   * @param {string} query The string to search for on wikia
+   * @returns {array} Array with info from all found articles
+   */
+  async search(query) {
+    const articles = await this.searchResults(query);
+    const articleData = [];
+    for (let i = 0; i < articles.length; i++) {
+      articleData.push(await this.getArticle(articles[i]))
+    }
+
+    return articleData;
   }
 }
 module.exports = HermitPurple;
