@@ -6,8 +6,7 @@ const fetch = require('node-fetch'),
   } = require('./Constants.js');
 
 class HermitPurple {
-  constructor(fandom, limit) {
-    this.fandom = fandom ? fandom : "jojo";
+  constructor(fandom = "jojo", limit = 1) {
     this.limit = Number.isInteger(limit) ? limit : 1;
     this.wikiUrl = "https://" + fandom + ".fandom.com";
   }
